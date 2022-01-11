@@ -8,8 +8,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/baseline_arrow_back_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/baseline_grade_24.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/baseline_grade_24_grey.xml" value="0.10520833333333333" />
         <entry key="app/src/main/res/drawable/baseline_language_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/baseline_location_on_24.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/baseline_phone_24.xml" value="0.1" />
@@ -18,9 +20,11 @@
         <entry key="app/src/main/res/drawable/ic_person_add_white_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_star_border_white_24dp.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_star_white_24dp.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/outline_arrow_back_24.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_add_neighbour.xml" value="0.2604166666666667" />
         <entry key="app/src/main/res/layout/activity_list_neighbour.xml" value="0.26132246376811596" />
         <entry key="app/src/main/res/layout/activity_neighbour_details.xml" value="0.284375" />
+        <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.284375" />
         <entry key="app/src/main/res/layout/fragment_list_neighbour.xml" value="0.2617753623188406" />
         <entry key="app/src/main/res/layout/fragment_neighbour.xml" value="0.2694746376811594" />
         <entry key="app/src/main/res/layout/fragment_neighbour_list.xml" value="0.2554347826086957" />

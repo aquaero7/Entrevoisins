@@ -1,5 +1,7 @@
 package com.openclassrooms.entrevoisins.model;
 
+import android.os.Parcelable;
+
 import java.util.Objects;
 
 /**
@@ -25,6 +27,10 @@ public class Neighbour {
     /** About me */
     private String aboutMe;
 
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    private Boolean statusFavorite;
+    // fin
+
     /**
      * Constructor
      * @param id
@@ -39,6 +45,10 @@ public class Neighbour {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
+
+        // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        this.statusFavorite = statusFavorite;
+        // fin
     }
 
     public long getId() {
@@ -88,6 +98,19 @@ public class Neighbour {
     public void setAboutMe(String aboutMe) {
         this.aboutMe = aboutMe;
     }
+
+    // >>>PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public Boolean getStatusFavorite() {
+        if (statusFavorite == null) {
+            statusFavorite = false;
+        }
+        return statusFavorite;
+    }
+
+    public void setStatusFavorite(Boolean statusFavorite) {
+        this.statusFavorite = statusFavorite;
+    }
+    // fin
 
     @Override
     public boolean equals(Object o) {

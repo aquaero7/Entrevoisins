@@ -1,12 +1,14 @@
 package com.openclassrooms.entrevoisins.service;
 
+import android.os.Parcelable;
+
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public abstract class DummyNeighbourGenerator {
+public abstract class DummyNeighbourGenerator implements Parcelable {
 
     public static List<Neighbour> DUMMY_NEIGHBOURS = Arrays.asList(
             new Neighbour(1, "Caroline", "https://i.pravatar.cc/150?u=a042581f4e29026704d", "Saint-Pierre-du-Mont ; 5km",

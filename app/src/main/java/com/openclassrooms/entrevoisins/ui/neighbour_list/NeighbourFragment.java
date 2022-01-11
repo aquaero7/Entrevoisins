@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
+import com.openclassrooms.entrevoisins.events.RemoveNeighbourFromFavoritesEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
@@ -28,21 +29,47 @@ public class NeighbourFragment extends Fragment {
     private List<Neighbour> mNeighbours;
     private RecyclerView mRecyclerView;
 
-
     /**
      * Create and return a new instance
      * @return @{@link NeighbourFragment}
      */
+    /* >>> Initialement dans le code & opt1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public static NeighbourFragment newInstance() {
         NeighbourFragment fragment = new NeighbourFragment();
         return fragment;
     }
+    */ //fin
 
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public static NeighbourFragment newInstance(int position) {
+        NeighbourFragment fragment = new NeighbourFragment();
+
+        Bundle args = new Bundle();
+        args.putInt("ARGUMENT", position);
+        fragment.setArguments(args);
+
+        return fragment;
+    }
+    // //fin
+
+    /* >>> Initialement dans le code et opt1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mApiService = DI.getNeighbourApiService();
     }
+    */ //fin
+
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    int tabId;
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mApiService = DI.getNeighbourApiService();
+        tabId = getArguments().getInt("ARGUMENT", 0);
+    }
+    // //fin
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,10 +85,27 @@ public class NeighbourFragment extends Fragment {
     /**
      * Init the List of neighbours
      */
+
+    /* >>> Initialement dans le code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
     }
+    */ //fin
+
+    /* >>> PH et opt1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    private void initList() {
+        mNeighbours = mApiService.getNeighbours(false);
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+    }
+    */ //fin
+
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    private void initList() {
+        mNeighbours = mApiService.getNeighbours(tabId == 1);
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, tabId));
+    }
+    // //fin
 
     @Override
     public void onResume() {
@@ -90,4 +134,13 @@ public class NeighbourFragment extends Fragment {
         mApiService.deleteNeighbour(event.neighbour);
         initList();
     }
+
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @Subscribe
+    public void onRemoveNeighbourFromFavorites(RemoveNeighbourFromFavoritesEvent event) {
+        mApiService.removeFromFavorites(event.neighbour);
+        initList();
+    }
+    // //fin
+
 }
