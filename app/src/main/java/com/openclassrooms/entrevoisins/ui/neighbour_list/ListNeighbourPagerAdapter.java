@@ -67,7 +67,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     /* >>> Initialement dans le code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     @Override
     public int getCount() {
-        return 2;
+        return 1;
     }
     */ //fin
 

@@ -30,6 +30,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
 
     private final List<Neighbour> mNeighbours;
 
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public static final String NEIGHBOUR_ID = "NEIGHBOUR_ID";
+    private int mTab;
+    // //fin
+
     /* >>> Initialement dans le code >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items) {
         mNeighbours = items;
@@ -37,24 +42,11 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
     */ //fin
 
     // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    private int mTab;
     public MyNeighbourRecyclerViewAdapter(List<Neighbour> items, int tab) {
         mNeighbours = items;
         mTab = tab;
     }
     // //fin
-
-
-    // >>> Option1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    public static final String NEIGHBOUR_ID = "NEIGHBOUR_ID";
-    // //fin
-
-    /* >>> Option2&3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    public static final String NEIGHBOUR_POS = "NEIGHBOUR_POS";
-    public static final String NEIGHBOUR_LIST = "NEIGHBOUR_LIST";
-    public static final String BUNDLE = "BUNDLE";
-    public static final String LIST_TO_PASS = "LIST_TO_PASS";
-    */ //fin
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -71,6 +63,7 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .load(neighbour.getAvatarUrl())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
+
         // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         if(mTab == 1) {
             holder.mDeleteButton.setImageResource(R.drawable.baseline_grade_24_gold);
@@ -109,27 +102,8 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 Log.d(v.getContext().getClass().toString(), "onClick: Clic on neighbour " + neighbour.getName());
 
                 Intent detailsActivity = new Intent(v.getContext(), NeighbourDetailsActivity.class);
-
-                // >>> Option1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                 detailsActivity.putExtra(NEIGHBOUR_ID, neighbour.getId());
-                // //fin
-
-                /* >>> Option2 Liste KO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                detailsActivity.putExtra(NEIGHBOUR_POS, holder.getAdapterPosition());
-                detailsActivity.putExtra(NEIGHBOUR_LIST, (Parcelable) mNeighbours);
-                    // FATAL EXCEPTION : ArrayList cannot be cast to android.os.Parcelable
-                */ //fin
-
-                /* >>> Option3 Bundle KO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-                detailsActivity.putExtra(NEIGHBOUR_POS, holder.getAdapterPosition());
-                Bundle listToPass = new Bundle();
-                listToPass.putParcelable(LIST_TO_PASS, (Parcelable) mNeighbours);
-                // FATAL EXCEPTION : ArrayList cannot be cast to android.os.Parcelable
-                detailsActivity.putExtra(BUNDLE, listToPass);
-                */ //fin
-
                 v.getContext().startActivity(detailsActivity);
-
             }
         });
         // //fin

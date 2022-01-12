@@ -1,6 +1,8 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 
+import static com.openclassrooms.entrevoisins.ui.neighbour_list.MyNeighbourRecyclerViewAdapter.NEIGHBOUR_ID;
+
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -31,17 +33,6 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
     private TextView mLink;
     private TextView mAboutMe;
 
-    // >>> Option1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    public static final String NEIGHBOUR_ID = "NEIGHBOUR_ID";
-    // //fin
-
-    // >>> Option2&3 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    public static final String NEIGHBOUR_POS = "NEIGHBOUR_POS";
-    public static final String NEIGHBOUR_LIST = "NEIGHBOUR_LIST";
-    public static final String BUNDLE = "BUNDLE";
-    public static final String LIST_TO_PASS = "LIST_TO_PASS";
-    // //fin
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +48,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         mLink = findViewById(R.id.details_link);
         mAboutMe = findViewById(R.id.details_about_me);
 
-        // >>> Option1 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
         Intent detailsActivity = getIntent();
 
         long neighbourId = detailsActivity.getLongExtra(NEIGHBOUR_ID, -1);
@@ -72,46 +63,6 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         String neighbourPhoneNumber = neighbour.getPhoneNumber();
         String neighbourAboutMe = neighbour.getAboutMe();
         // //fin
-
-        /* >>> Option2 Liste KO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        Bundle extras = getIntent().getExtras();
-
-        int neighbourPos = extras.getInt(NEIGHBOUR_POS, -1);
-        Log.d(this.getClass().getName(), "onClick: Valeur POS passée : " + neighbourPos);
-
-        List<Neighbour> mNeighbours = extras.getParcelable(NEIGHBOUR_LIST);
-            // FATAL EXCEPTION : ArrayList cannot be cast to android.os.Parcelable
-        Neighbour neighbour = mNeighbours.get((int) neighbourPos);
-
-        String neighbourAvatarUrl = neighbour.getAvatarUrl();
-        String neighbourName = neighbour.getName();
-        String neighbourAddress = neighbour.getAddress();
-        String neighbourPhoneNumber = neighbour.getPhoneNumber();
-        String neighbourAboutMe = neighbour.getAboutMe();
-
-        Log.d(this.getClass().getName(), "onClick: NOM reconstitué : " + neighbourName);
-        */ //fin
-
-        /* >>> Option3 Bundle KO >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        Bundle extras = getIntent().getExtras();
-
-        int neighbourPos = extras.getInt(NEIGHBOUR_POS, -1);
-        Log.d(this.getClass().getName(), "onClick: Valeur POS passée : " + neighbourPos);
-
-        Bundle listToPass = extras.getBundle(BUNDLE);
-        List<Neighbour> mNeighbours = listToPass.getParcelable(LIST_TO_PASS);
-            // FATAL EXCEPTION : ArrayList cannot be cast to android.os.Parcelable
-        Neighbour neighbour = mNeighbours.get((int) neighbourPos);
-
-        String neighbourAvatarUrl = neighbour.getAvatarUrl();
-        String neighbourName = neighbour.getName();
-        String neighbourAddress = neighbour.getAddress();
-        String neighbourPhoneNumber = neighbour.getPhoneNumber();
-        String neighbourAboutMe = neighbour.getAboutMe();
-
-        Log.d(this.getClass().getName(), "onClick: NOM reconstitué : " + neighbourName);
-        */ //fin
-
 
         Glide.with(mAvatarUrl.getContext())
                 .load(neighbourAvatarUrl)
@@ -136,7 +87,6 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         mToggleFavoriteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // neighbour.setStatusFavorite(!neighbour.getStatusFavorite());
                 neighbourApi.toggleStatusFavorite(neighbour);
                 checkFavoriteStatus(neighbour);
                 toastStatusChange(neighbour);
