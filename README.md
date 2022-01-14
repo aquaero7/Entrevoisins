@@ -41,9 +41,9 @@ When opening the project, Android studio will automatically configure and downlo
 
 * In the configuration list (in Android Studio toolbar), select 'app'.
 * In the devices list (in Android Studio toolbar), select your device or your emulator.
-* Click the 'Run app' button (the green arrow) or <Maj> + <F10>.  
+* Click the 'Run app' button (the green arrow) or Maj+F10.  
   Android Studio will automatically perform compilation before running the application.
 
 If necessary, before running the application :
 * Synchronize Gradle by clicking the 'Sync Project with Gradle files' button (the elephant) in Android Studio toolbar.
-* Compile the project by clicking the 'Make Project' button (the hammer) in Android Studio toolbar or <Ctrl> + <F9>.
+* Compile the project by clicking the 'Make Project' button (the hammer) in Android Studio toolbar or Ctrl+F9.
