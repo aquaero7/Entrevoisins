@@ -4,35 +4,35 @@ This repository contains the P3 project of OpenClassrooms training program for A
 'ENTREVOISINS' is an application allowing neighbourhood residents to help each other.
 
 The links to this repository are :
-* https://github.com/aquaero7/Entrevoisins.git (with HTTPS)
-* git@github.com:aquaero7/Entrevoisins.git (with SSH)
+* https://github.com/aquaero7/Entrevoisins.git _(if using HTTPS)_
+* git@github.com:aquaero7/Entrevoisins.git _(if using SSH)_
 
 # **Get and open the project in Android Studio** #
 **Method 1 : Get the project manually**
 ---------------------------------------
 * Download the project : 'Code' > 'Download ZIP'.
 * Unzip the downloaded file into your Android Studio projects directory.
-* Open Android Studio and import project : 'Open'  
+* Open Android Studio and import project : 'Open',  
         or, if a project is already open : 'File' > 'New' > 'Import project...'.
 * Select the project from your Android Studio projects directory.
 
 **Method 2 : Use Git**
 ----------------------
 * Create a directory with the name of the project in your Android Studio projects directory.
-* Open a terminal and go to this directory.
-* Type the command : 'git clone https://github.com/aquaero7/Entrevoisins.git' (with HTTPS)  
-                or : 'git@github.com:aquaero7/Entrevoisins.git' (with SSH).
-* Open Android Studio and import project : 'Open'  
+* Open a terminal window and go to this directory.
+* Type the command : 'git clone https://github.com/aquaero7/Entrevoisins.git' _(if using HTTPS)_,  
+                or : 'git@github.com:aquaero7/Entrevoisins.git' _(if using SSH)_.
+* Open Android Studio and import project : 'Open',  
         or, if a project is already open : 'File' > 'New' > 'Import project...'.
 * Select the project from your Android Studio projects directory.
 
 **Method 3 : Use Android Studio VCS with Git**
 ----------------------------------------------
-* Open Android Studio and import project : 'Get from VCS'  
+* Open Android Studio and import project : 'Get from VCS',  
         or, if a project is already open : 'File' > 'New' > 'Project from Version Control...'.
 * Select Version Control : Select 'Git'.
-* Type URL : https://github.com/aquaero7/Entrevoisins.git (with HTTPS)  
-        or : 'git@github.com:aquaero7/Entrevoisins.git' (with SSH).
+* Type URL : https://github.com/aquaero7/Entrevoisins.git _(if using HTTPS)_,  
+        or : 'git@github.com:aquaero7/Entrevoisins.git' _(if using SSH)_.
 * Select directory : Your Android Studio projects directory.
 * Click 'Clone'.
 
