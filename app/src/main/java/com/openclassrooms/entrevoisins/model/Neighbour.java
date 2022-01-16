@@ -1,7 +1,5 @@
 package com.openclassrooms.entrevoisins.model;
 
-import android.os.Parcelable;
-
 import java.util.Objects;
 
 /**
@@ -28,6 +26,10 @@ public class Neighbour {
     private String aboutMe;
 
     // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    /** Profil */
+    private String profilUrl;
+
+    /** Favorite status */
     private Boolean statusFavorite;
     // fin
 
@@ -36,8 +38,12 @@ public class Neighbour {
      * @param id
      * @param name
      * @param avatarUrl
+     * @param address
+     * @param profilUrl
+     * @param phoneNumber
+     * @param aboutMe
      */
-    public Neighbour(long id, String name, String avatarUrl, String address,
+    public Neighbour(long id, String name, String avatarUrl, String address, String profilUrl,
                      String phoneNumber, String aboutMe) {
         this.id = id;
         this.name = name;
@@ -47,6 +53,7 @@ public class Neighbour {
         this.aboutMe = aboutMe;
 
         // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        this.profilUrl = profilUrl;
         this.statusFavorite = statusFavorite;
         // fin
     }
@@ -100,6 +107,14 @@ public class Neighbour {
     }
 
     // >>>PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    public String getProfilUrl() {
+        return profilUrl;
+    }
+
+    public void setProfilUrl(String address) {
+        this.profilUrl = address;
+    }
+
     public Boolean getStatusFavorite() {
         if (statusFavorite == null) {
             statusFavorite = false;

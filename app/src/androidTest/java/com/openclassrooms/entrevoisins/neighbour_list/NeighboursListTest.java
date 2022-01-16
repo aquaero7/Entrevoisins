@@ -90,8 +90,15 @@ public class NeighboursListTest {
         */ //fin
 
         // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        // Given : We display neighbours list.
+        onView(allOf(ViewMatchers.withText(R.string.tab_neighbour_title), ViewMatchers.isDescendantOfA(withId(R.id.tabs))))
+                .perform(click());
+
+        // Then : We check that the list is not empty.
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(matches(hasMinimumChildCount(1)));
+
         // //fin
     }
 
@@ -111,38 +118,63 @@ public class NeighboursListTest {
         */ //fin
 
         // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+        // Given : We display neighbours list.
+        onView(allOf(ViewMatchers.withText(R.string.tab_neighbour_title), ViewMatchers.isDescendantOfA(withId(R.id.tabs))))
+                .perform(click());
+
+        // We calculate the number of elements of the neighbours list
         int sizeN = testApi.getNeighbours(false).size();
+
         // Given : The number of elements is 'size'
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(withItemCount(sizeN));
+
         // Given : We remove the element at position 2
+
         // When perform a click on a delete icon
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, new DeleteViewAction()));
-        // Then : the number of element is 'size'-1
+
+        // Then : the number of element of the neighbours list is now 'size'-1
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(withItemCount(sizeN-1));
+
         // //fin
     }
 
     // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
     /**
      * When we click on an item, the item details view is displayed
      */
     @Test
     public void myNeighboursList_clickAction_shouldDisplayDetailsView() {
+
+        // Given : We display neighbours list.
+        onView(allOf(ViewMatchers.withText(R.string.tab_neighbour_title), ViewMatchers.isDescendantOfA(withId(R.id.tabs))))
+                .perform(click());
+
+        // We calculate the number of elements of the neighbours list
         int sizeN = testApi.getNeighbours(false).size();
+
         // Given : We click on element at position 3
+
+        // Neighbours list is displayed
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(withItemCount(sizeN));
+
         // When perform a click on element at position 3
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(2, click()));
+
         // Then : The details view is displayed
         onView(ViewMatchers.withId(R.id.main_details_neighbour))
                 .check(matches(isDisplayed()));
-        // We can return to neighbours list
-        pressBack();
+
+        // We can return to neighbours list by clicking the back button
+        onView(ViewMatchers.withId(R.id.details_button_back))
+                .perform(click());
     }
 
     /**
@@ -150,21 +182,35 @@ public class NeighboursListTest {
      */
     @Test
     public void detailsView_whenDisplayed_shouldShowTextviewForNameCorrectlyFilled() {
+
+        // Given : We display neighbours list.
+        onView(allOf(ViewMatchers.withText(R.string.tab_neighbour_title), ViewMatchers.isDescendantOfA(withId(R.id.tabs))))
+                .perform(click());
+
+        // We calculate the number of elements of the neighbours list
         int sizeN = testApi.getNeighbours(false).size();
+
         // Given : We click on element at position 4
+
+        // Neighbours list is displayed
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(withItemCount(sizeN));
+
         // When perform a click on element at position 4
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(3, click()));
+
         // Then : The textViews for name displays the name of element at position 4
         onView(ViewMatchers.withId(R.id.details_name))
                 .check(matches(withText(testApi.getNeighbours(false).get(3).getName())));
+
         // Then : The textViews for name on avatar displays the name of element at position 4
         onView(ViewMatchers.withId(R.id.details_name_avatar))
                 .check(matches(withText(testApi.getNeighbours(false).get(3).getName())));
-        // We can return to neighbours list
-        pressBack();
+
+        // We can return to neighbours list by clicking the back button
+        onView(ViewMatchers.withId(R.id.details_button_back))
+                .perform(click());
     }
 
     /**
@@ -177,39 +223,45 @@ public class NeighboursListTest {
 
         // START CONDITIONS CHECKS : *******
 
-        // Given : Neighbours list is displayed
+        // Given : We display neighbours list.
+        onView(allOf(ViewMatchers.withText(R.string.tab_neighbour_title), ViewMatchers.isDescendantOfA(withId(R.id.tabs))))
+                .perform(click());
+
+        // We check that neighbours list is displayed
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .check(withItemCount(sizeN));
 
-        // Given : Favorites list is hidden and empty
+        // We check that favorites list is hidden and empty
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), not(ViewMatchers.hasFocus())))
                 .check(withItemCount(sizeF));
 
 
         // TEST CONDITIONS SETUP : *******
 
-        // Given : Set favorite a first element in neighbours list...
-        // ...by clicking on the element at position 5 in neighbours list to open details view...
+        // Given : Set favorite a first element in neighbours list.
+
+        // We click the element at position 5 in neighbours list to open details view.
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(4, click()));
 
-        // ...and by clicking on favorite toggle...
+        // We click favorite toggle.
         onView(ViewMatchers.withId(R.id.details_button_favorite_toggle))
                 .perform(click());
 
-        // ...and return to neighbours list
+        // We return to neighbours list
         pressBack();
 
-        // Given : Set favorite a second element in neighbours list...
-        // ...by clicking on the element at position 7 in neighbours list to open details view...
+        // Given : Set favorite a second element in neighbours list.
+
+        // We click the element at position 7 in neighbours list to open details view.
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(6, click()));
 
-        // ...and by clicking on favorite toggle
+        // We click favorite toggle
         onView(ViewMatchers.withId(R.id.details_button_favorite_toggle))
                 .perform(click());
 
-        // ...and return to neighbours list
+        // We return to neighbours list
         pressBack();
 
 
@@ -227,7 +279,7 @@ public class NeighboursListTest {
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), not(ViewMatchers.hasFocus())))
                 .check(withItemCount(sizeN));
 
-        // Given : When perform a click on element at position 1 in favorites list
+        // When perform a click on element at position 1 in favorites list
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
@@ -235,23 +287,15 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.details_name))
                 .check(matches(withText(testApi.getNeighbours(false).get(4).getName())));
 
-        // Then : The textViews for name on avatar displays the name of element at position 5 in neighbours list (first neighbour set favorite)
-        onView(ViewMatchers.withId(R.id.details_name_avatar))
-                .check(matches(withText(testApi.getNeighbours(false).get(4).getName())));
-
         // We can return to favorites list
         pressBack();
 
-        // Given : When perform a click on element at position 2 in favorites list
+        // When perform a click on element at position 2 in favorites list
         onView(allOf(ViewMatchers.withId(R.id.list_neighbours), ViewMatchers.hasFocus()))
                 .perform(RecyclerViewActions.actionOnItemAtPosition(1, click()));
 
         // Then : The textViews for name displays the name of element at position 7 in neighbours list (second neighbour set favorite)
         onView(ViewMatchers.withId(R.id.details_name))
-                .check(matches(withText(testApi.getNeighbours(false).get(6).getName())));
-
-        // Then : The textViews for name on avatar displays the name of element at position 7 in neighbours list (second neighbour set favorite)
-        onView(ViewMatchers.withId(R.id.details_name_avatar))
                 .check(matches(withText(testApi.getNeighbours(false).get(6).getName())));
 
         // We can return to favorites list

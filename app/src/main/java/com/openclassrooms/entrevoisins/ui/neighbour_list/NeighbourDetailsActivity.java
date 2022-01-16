@@ -30,7 +30,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
     private TextView mName;
     private TextView mAddress;
     private TextView mPhoneNumber;
-    private TextView mLink;
+    private TextView mProfilUrl;
     private TextView mAboutMe;
 
     @Override
@@ -45,7 +45,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         mName = findViewById(R.id.details_name);
         mAddress = findViewById(R.id.details_address);
         mPhoneNumber = findViewById(R.id.details_phone_number);
-        mLink = findViewById(R.id.details_link);
+        mProfilUrl = findViewById(R.id.details_profil_url);
         mAboutMe = findViewById(R.id.details_about_me);
 
         // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
@@ -62,6 +62,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         String neighbourAddress = neighbour.getAddress();
         String neighbourPhoneNumber = neighbour.getPhoneNumber();
         String neighbourAboutMe = neighbour.getAboutMe();
+        String neighbourProfilUrl = neighbour.getProfilUrl();
         // //fin
 
         Glide.with(mAvatarUrl.getContext())
@@ -72,7 +73,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         mName.setText(neighbourName);
         mAddress.setText(neighbourAddress);
         mPhoneNumber.setText(neighbourPhoneNumber);
-        mLink.setText("www.facebook.fr/" + neighbourName.toLowerCase());
+        mProfilUrl.setText(neighbourProfilUrl);
         mAboutMe.setText(neighbourAboutMe);
 
         checkFavoriteStatus(neighbour);

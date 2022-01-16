@@ -33,6 +33,10 @@ public class AddNeighbourActivity extends AppCompatActivity {
     TextInputLayout phoneInput;
     @BindView(R.id.addressLyt)
     TextInputLayout addressInput;
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    @BindView(R.id.profilUrlLyt)
+    TextInputLayout profilUrlInput;
+    // //fin
     @BindView(R.id.aboutMeLyt)
     TextInputLayout aboutMeInput;
     @BindView(R.id.create)
@@ -86,6 +90,9 @@ public class AddNeighbourActivity extends AppCompatActivity {
                 nameInput.getEditText().getText().toString(),
                 mNeighbourImage,
                 addressInput.getEditText().getText().toString(),
+                // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                profilUrlInput.getEditText().getText().toString(),
+                // //fin
                 phoneInput.getEditText().getText().toString(),
                 aboutMeInput.getEditText().getText().toString()
         );
