@@ -40,7 +40,7 @@ public class NeighbourFragment extends Fragment {
     }
     */ //fin
 
-    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *8
     public static NeighbourFragment newInstance(int position) {
         NeighbourFragment fragment = new NeighbourFragment();
 
@@ -60,7 +60,7 @@ public class NeighbourFragment extends Fragment {
     }
     */ //fin
 
-    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *9
     int tabId;
 
     @Override
@@ -100,7 +100,7 @@ public class NeighbourFragment extends Fragment {
     }
     */ //fin
 
-    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *10
     private void initList() {
         mNeighbours = mApiService.getNeighbours(tabId == 1);
         mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours, tabId));
@@ -135,7 +135,7 @@ public class NeighbourFragment extends Fragment {
         initList();
     }
 
-    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *17
     @Subscribe
     public void onRemoveNeighbourFromFavorites(RemoveNeighbourFromFavoritesEvent event) {
         mApiService.removeFromFavorites(event.neighbour);

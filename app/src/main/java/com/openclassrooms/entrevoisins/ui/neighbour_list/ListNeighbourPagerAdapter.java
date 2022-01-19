@@ -52,7 +52,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     }
     */ //fin
 
-    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *12
     @Override
     public Fragment getItem(int position) {
         return NeighbourFragment.newInstance(position);
@@ -78,7 +78,7 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
     }
     */ //fin
 
-    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    // >>> Opt2 >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *11
     @Override
     public int getCount() {
         return 2;

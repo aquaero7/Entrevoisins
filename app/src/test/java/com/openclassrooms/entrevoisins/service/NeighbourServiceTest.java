@@ -63,12 +63,21 @@ public class NeighbourServiceTest {
         // We make sure that favorites list is empty by clearing it
         service.getNeighbours(true).clear();
 
-        // We set favorite the element at position 2 in neighbours list
-        service.getNeighbours(false).get(1).setStatusFavorite(true);
+        // We check that the size of favorites list is 0
+        assertEquals(service.getNeighbours(true).size(), 0);
 
-        // Then : Favorites list is no longer empty
-        List<Neighbour> favorites = service.getNeighbours(true);
-        assertTrue(!(favorites.isEmpty()));
+        // We set favorite the elements at position 2 and 6 in neighbours list
+        service.getNeighbours(false).get(1).setStatusFavorite(true);
+        service.getNeighbours(false).get(5).setStatusFavorite(true);
+
+        // Then we check that the size of favorites list is 2
+        assertEquals(service.getNeighbours(true).size(), 2);
+
+
+        // Then we ckeck that the elements at position 1 and 2 in favorites list are favorite
+        assertTrue(service.getNeighbours(true).get(0).getStatusFavorite());
+        assertTrue(service.getNeighbours(true).get(1).getStatusFavorite());
+
     }
 
     @Test

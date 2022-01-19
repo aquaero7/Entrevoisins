@@ -48,7 +48,7 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         mProfilUrl = findViewById(R.id.details_profil_url);
         mAboutMe = findViewById(R.id.details_about_me);
 
-        // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *3
         Intent detailsActivity = getIntent();
 
         long neighbourId = detailsActivity.getLongExtra(NEIGHBOUR_ID, -1);
@@ -63,7 +63,6 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         String neighbourPhoneNumber = neighbour.getPhoneNumber();
         String neighbourAboutMe = neighbour.getAboutMe();
         String neighbourProfilUrl = neighbour.getProfilUrl();
-        // //fin
 
         Glide.with(mAvatarUrl.getContext())
                 .load(neighbourAvatarUrl)
@@ -94,9 +93,11 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
                 Log.d(this.getClass().getName(), "onClick toggleFavoriteButton : Nouvelle valeur = " + neighbour.getStatusFavorite());
             }
         });
+        // //fin
 
     }
 
+    // >>> PH >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> *20
     public void checkFavoriteStatus(Neighbour neighbour) {
         if (neighbour.getStatusFavorite() == false) {
             mToggleFavoriteButton.setImageResource(R.drawable.baseline_grade_24_grey);
@@ -113,5 +114,6 @@ public class NeighbourDetailsActivity extends AppCompatActivity {
         }
 
     }
+    // //fin
 
 }
